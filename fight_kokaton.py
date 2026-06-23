@@ -192,18 +192,18 @@ def main():
                 return
         
         for i,bomb in enumerate(bombs):
-            for j,beam in enumerate(beams):
+            for j,beam in enumerate(beams):#ボムとビームのリストからそれぞれ要素を取り出す。
                 if beam is not None and bomb is not None: 
-                    if  beam.rct.colliderect(bomb.rct):
+                    if  beam.rct.colliderect(bomb.rct):#ボムとビームが衝突したら
                         bird.change_img(6, screen)
                         pg.display.update()
                         bombs[i] = None
                         beams[j] = None
-                        score.score += 1
+                        score.score += 1 #ビームとボムのその要素の番号をNoneする。スコアの表示をプラス１する
                         
             
         bombs = [bomb for bomb in bombs if bomb is not None]
-        beams = [beam for beam in beams if beam is not None and check_bound(beam.rct) == (True,True)]
+        beams = [beam for beam in beams if beam is not None and check_bound(beam.rct) == (True,True)] #ビームの画面外判定
         
             
         key_lst = pg.key.get_pressed()
@@ -211,7 +211,7 @@ def main():
         for beam in beams: 
             beam.update(screen)  
         for bomb in bombs:
-            bomb.update(screen)
+            bomb.update(screen)#ビームとボムのそれぞれをアップデートする
         score.update(screen)
         pg.display.update()
         tmr += 1
