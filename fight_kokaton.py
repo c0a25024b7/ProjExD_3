@@ -194,7 +194,7 @@ def main():
         for i,bomb in enumerate(bombs):
             for j,beam in enumerate(beams):
                 if beam is not None and bomb is not None: 
-                    if  beam.rct.colliderect(bombs.rct):
+                    if  beam.rct.colliderect(bomb.rct):
                         bird.change_img(6, screen)
                         pg.display.update()
                         bombs[i] = None
